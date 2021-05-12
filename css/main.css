@@ -1,0 +1,14 @@
+.form {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: left;
+  align-items: flex-start;
+}
+
+.submit {
+  background-color: greenyellow;
+  color: white;
+}
