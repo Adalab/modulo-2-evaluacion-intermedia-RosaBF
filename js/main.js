@@ -28,8 +28,8 @@ function handlerClickButton(ev) {
   } else if (inputValue === randomNumber) {
     clue.value = 'Has ganado campeona!';
   } else if (isNaN(inputValue)) {
-    clue.value = 'El número debe 
-    entre 1 y 100';
+    clue.value = 'El número debe entre 1 y 100';
+  }
 }
 
 submitButton.addEventListener('click', handlerClickButton);
