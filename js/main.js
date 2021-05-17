@@ -1,35 +1,52 @@
 'use strict';
 
-// recoger el número que introdujo la usuaria
-// hacer validaciones de número (funciones con condicionales)
+/* generar un número random
+// cuando la usuaria pone un número y hace click:
+1.1 Cuando la jugadora introduzca un número mayor que el aleatorio y pulse en Prueba: Demasiado alto.
+1.2 Cuando la jugadora introduzca un número menor que el aleatorio y pulse en Prueba: Demasiado bajo.
+1.3 Cuando la jugadora introduzca un número igual que el aleatorio y pulse en Prueba: Has ganado campeona!!!
+1.4 Cuando la jugadora no introduzca un número válido y pulse en Prueba: El número debe estar
+entre 1 y 100.
+2. Crear un contador (cada click tiene que sumarse al número de intentos, cada vez que hagamos click se suma 1*/
+
+const randomNumber = getRandomNumber(100);
+const submitButton = document.querySelector('.js-submit');
+const input = document.querySelector('.js-input');
+const clue = document.querySelector('.js-clue');
+const trie = document.querySelector('.js-tries');
 
 function getRandomNumber(max) {
   return Math.ceil(Math.random() * max);
 }
 
-const randomNumber = getRandomNumber(100);
-console.log(randomNumber);
+function clickValue(ev) {
+  ev.preventDefault();
+  const inputValue = parseInt(input.value);
+  if (inputValue > randomNumber) {
+    clue.innerHTML = 'Demasiado alto';
+  } else if (inputValue < randomNumber) {
+    clue.innerHTML = 'Demasiado bajo';
+  } else if (inputValue === randomNumber) {
+    clue.innerHTML = 'Has ganado campeona!';
+  } else if (isNaN(inputValue)) {
+    clue.innerHTML = 'El número debe entre 1 y 100';
+  }
+}
 
-const submitButton = document.querySelector('.js-submit');
-console.log(submitButton);
+// Create a counter which increments the counter and paints its value in the HTML when the user clicks the test button.
 
-const input = document.querySelector('.js-input');
-console.log(input.value);
+let counter = 0;
 
-const clue = document.querySelector('.js-clue');
+function clickCounter() {
+  counter += 1;
+  trie.innerHTML = `Número de intentos: ${counter}`;
+}
+
+// calling multiple functions inside an unique handler.
 
 function handlerClickButton(ev) {
-  ev.preventDefault();
-  const inputValue = input.value;
-  if (inputValue > randomNumber) {
-    clue.value = 'Demasiado alto';
-  } else if (inputValue < randomNumber) {
-    clue.value = 'Demasiado bajo';
-  } else if (inputValue === randomNumber) {
-    clue.value = 'Has ganado campeona!';
-  } else if (isNaN(inputValue)) {
-    clue.value = 'El número debe 
-    entre 1 y 100';
+  clickValue(ev);
+  clickCounter();
 }
 
 submitButton.addEventListener('click', handlerClickButton);
