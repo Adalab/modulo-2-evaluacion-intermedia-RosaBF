@@ -7,7 +7,7 @@
 1.3 Cuando la jugadora introduzca un número igual que el aleatorio y pulse en Prueba: Has ganado campeona!!!
 1.4 Cuando la jugadora no introduzca un número válido y pulse en Prueba: El número debe estar
 entre 1 y 100.
-2. Crear un contador (cada click tiene que sumarse al número de intentos, cada vez que hagamos click se suma 1*/
+2. Crear un contador, cada vez que hagamos click se suma 1*/
 
 const randomNumber = getRandomNumber(100);
 const submitButton = document.querySelector('.js-submit');
